@@ -1,0 +1,68 @@
+https://github.com/minguzi-maker/ex01.git   => 깃허브에서 만든 내 온라인 디렉터리
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+…or create a new repository on the command line
+
+git init   -- 이 폴더를 작업공간으로 쓰겠다라는 명령(숨긴 항목 보기 눌러야함)
+git status   => add안해서 오류발생
+<<803@DESKTOP-EUKEFO5 MINGW64 /c/Dev/git_workspace/ex02 (master)>>master-> 상위폴더(마스터)- 브랜치(가지) 느낌으로 나뉨
+git add . <- 점까지 포함(디렉터리의 모든파일 추가(인덱스가 만들어졌다는 뜻))
+
+git commit -m "first commit" -- 커밋 메시지는 팀별로 통일해야함 => 서버을 안줘서 사용자 설정하라고 오류가 난다
+
+ git config --global user.email "chfhd951@gmail.com"
+ git config --global user.name "minguzi-maker"
+
+git status => 오류 안남
+git log => 해쉬값 보임 40자
+ => 경로+ .git/refs/header/ master 메모장으로 열면 해시값 적혀있음
+git commit -m "first commit" 
+git commit -m "second commit"  => commit을 추가하면 head -> master 가 최근 commit으로 옮겨짐 
+bcea2b5e9a8460a603b051813723324c8bc8afa9
+3b46be4fe5e1d697f9288fed86f70801c1ffb38b
+ fd94707c12f345d9cace58460efccf8e31921552
+ 7c28de7420f9679fbdc28c5d886c7a9116021559
+
+
+git log => 커밋기록이 다 뜨는데 각자 해쉬값이 잇어서, 롤백을 할 수 있다.
+
+git branch -M main
+git remote add origin https://github.com/minguzi-maker/ex01.git
+git push -u origin main
+
+pull 받고 push 한다음 로그를 보면
+ (HEAD -> master, origin/master)
+로 바뀌어있다
+
+
+
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+…or push an existing repository from the command line
+git remote add origin https://github.com/minguzi-maker/ex01.git
+git branch -M main
+git push -u origin main
+
+
+=========================================
+git clone https://github.com/minguzi-maker/ex01.git ex05
+cd ex05   <=다른 로컬 파일을   같은 저장소로 쓸때 init말고 이렇게쓴다
+
+=========깃헙에 올리기 전에==================
+
+git add .
+git commit -m "unrelated histories merge 해결"
+git push origin master
+
+add후 commit 하고 push  
+========깃헙에서 받기전에 ==================
+git log HEAD..origin/master
+
+또는
+
+bash
+git diff HEAD origin/master
+
+git merge origin/master    or      git pull origin master
+
