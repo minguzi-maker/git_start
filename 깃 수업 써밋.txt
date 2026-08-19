@@ -38,13 +38,21 @@ pull 받고 push 한다음 로그를 보면
  (HEAD -> master, origin/master)
 로 바뀌어있다
 
+폴더를 git에 연결할때 
+git clone https://github.com/minguzi-maker/git_start.git으로 받는것도 좋다 (init + remote add + pull) 단, 버전이 동일해야함
+
+
+
+
 
 
 
 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 …or push an existing repository from the command line
 git remote add origin https://github.com/minguzi-maker/ex01.git
-git branch -M main
+git branch -M main  => 이름 변경하는데 동일이름이있으면 덮어씌움
+	 -m  main   => 동일이름 없으면 바꾸기
+
 git push -u origin main
 
 
@@ -68,4 +76,39 @@ bash
 git diff HEAD origin/master
 
 git merge origin/master    or      git pull origin master
+==============================================
+git checkout -b topic   브랜치 새로 만들어서 옮겨가기 => 선언시에는 로컬에만 표기가된 상황(push할때 hub랑연결됨)
+git checkout topic   topic브랜치로 이동
+git branch  로컬 브랜치 목록만 보여줌
+git branch -a  로컬+repository 브랜치를 보여줌
+
+===============================
+git fetch origin (브랜치명)  => 모든 브랜치를 다운 받겠다.
+git checkout -b topic origin/topic  => 로컬에 topic브랜치만들기(기존) + origion의 topic브랜치 데이터 가져오기
+ ==여기까지 로컬에 topic을 추가해서  동기화하는 과정 (master는 변화 없음)
+
+커밋을 하나로 합칠때
+rebase , merge할때 squash 사용
+
+git checkout master => git merge --squash topic  => 커밋이 합쳐짐
+
+fast-forward merge =>merge 로그 안남음
+=> git merge --no-ff setting_topic => 머지하면서 로그가 남음
+<< LOG: Merge branch 'setting_topic' into dev >>
+
+
+
+	단계					명령어
+처음 각 컴퓨터 세팅				git clone
+자기 브랜치 만들기			git checkout -b 브랜치명 + git push -u origin 브랜치명
+작업 저장					add → commit → push
+다른 컴퓨터 작업 이어보기			git fetch → git checkout 브랜치명
+나중에 합치기				master로 이동 후 git merge
+
+git rebase -i HEAD~2 입력하고 i (insert) 선택하고 ,
+지우고 싶은 줄을 pick , 살릴행은 s,
+다음화면으로 넘어간후  pick 줄을 다 지우고 s 행만 살린 후  종료.
+
+git tag ibm~~~ :  태그 작성
+git push --tags origin main : 태그 업로드 ( 마무리 라는 뜻)
 
