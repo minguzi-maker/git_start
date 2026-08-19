@@ -27,7 +27,10 @@ bcea2b5e9a8460a603b051813723324c8bc8afa9
 
 git log => 커밋기록이 다 뜨는데 각자 해쉬값이 잇어서, 롤백을 할 수 있다.
 
-git branch -M main
+git branch -M main   => 브랜치 바꾸는거 
+git push origin main:master  : 일회성으로 바꾸는거
+git merge origin/master --allow-unrelated-histories 뭔가가 충돌날때
+
 git remote add origin https://github.com/minguzi-maker/ex01.git
 git push -u origin main
 
